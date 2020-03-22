@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work Day Scheduler</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./wd-sched-style.css" />
+  </head>
+  <body>
+    <header class="jumbotron">
+      <h1 class="display-3">Work Day Scheduler</h1>
+      <p class="lead">A simple calendar app for scheduling your work day</p>
+      <p id="currentDay" class="lead"></p>
+    </header>
+    <main class="container">
+      <section>
+        <form>
+          <div class="form-group div-schd-form-grp">
+            <div class="row">
+              <div class="col-md-2 div-schd-col">
+                <hr size="15" class="hr-table" />
+                <label class="float-right"><h3>12 PM</h3></label>
+              </div>
+              <div class="col-md-9 div-schd-col">
+                <hr size="15" class="hr-table" />
+                <textarea
+                  class="form-control ta-border ta-padng-prsnt"
+                  rows="2"
+                  time-slot="12-1-pm"
+                ></textarea>
+              </div>
+              <div class="col-md-1 div-schd-col">
+                <button class="btn btn-primary btn-save" id="btn-gen-pwd">
+                  save
+                </button>
+                <div class="col-md-1"></div>
+              </div>
+            </div>
+            <!--<hr size="15" class="hr-table" />-->
+          </div>
+        </form>
+      </section>
+    </main>
+    <script src="./xx.js"></script>
+  </body>
+</html>
