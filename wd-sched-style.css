@@ -96,3 +96,8 @@ hr.bold-gray {
 .float-right {
   float: right;
 }
+
+/* Align the time-slot text to right */
+h3 {
+  text-align: right;
+}
