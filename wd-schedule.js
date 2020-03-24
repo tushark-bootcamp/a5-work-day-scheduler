@@ -3,8 +3,15 @@ var section = $("section");
 var weekDayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var monthArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+// todayDate is used as a key to store the workSchedule JSON object
 var todayDate = "";
 
+// The below 2 parameters can be altered to change the work scheduler's start and end times
+var scheduleStartTime = 8;
+var scheduleEndTime = 17;
+
+// workSchedule JSON object to store the event against the time slot.
+// The workSchedule object caters for a full 24 hour work schedule
 var workSchedule = [
     {
         workingHour12: "1 AM",
@@ -128,13 +135,10 @@ var workSchedule = [
     },
 ]
 
-// The below 2 parameters can be altered to change the work scheduler's start and end times
-var scheduleStartTime = 8;
-var scheduleEndTime = 17;
-
+// Function to render the Header panel
 renderHeader();
+// Function to render the scheduler panel
 renderScheduler();
-
 
 // Returns the week day for a given index; 0 = Sunday and 6 = Saturday
 function getWeekDay(index) {
