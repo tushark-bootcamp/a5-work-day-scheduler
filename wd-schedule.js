@@ -3,6 +3,8 @@ var section = $("section");
 var weekDayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var monthArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+var todayDate = "";
+
 var workSchedule = [
     {
         workingHour12: "1 AM",
@@ -127,8 +129,8 @@ var workSchedule = [
 ]
 
 // The below 2 parameters can be altered to change the work scheduler's start and end times
-var scheduleStartTime = 0;
-var scheduleEndTime = 23;
+var scheduleStartTime = 8;
+var scheduleEndTime = 17;
 
 renderHeader();
 renderScheduler();
@@ -144,7 +146,7 @@ function getMonth(index) {
     return monthArr[index];
 }
 
-// Renderrs the Jumbotron header
+// Renders the Jumbotron header
 function renderHeader() {
 
     var today = new Date();
@@ -153,12 +155,20 @@ function renderHeader() {
 
     var month = getMonth(moment(today).month());
     //var year = moment(today).year();
+
+    var year = moment(today).year();
+    
+    // create today's date to be used as a key for storing the work schedule on local storage
+    todayDate = day + "/" + month + "/" + year;
+    //alert("todayDate: " + todayDate);
+    
     var weekDay = getWeekDay(moment(today).weekday());
 
     var currentDayVal = weekDay + ", " + month + " " + day;
     $("#currentDay").text(currentDayVal);
 }
 
+// Renders the scheduler panel 
 function renderScheduler() {
 
     // For 12 hour clock, the current hour is found as below
@@ -166,10 +176,11 @@ function renderScheduler() {
     var today = new Date();
     var currentHour = moment(today).hour();
     //alert("current time: " + currentHour);
-    /*var workScheduleStored = false;*/
-    if(localStorage.getItem("workSchedule") == true) {
-        workSchedule = localStorage.getItem("workSchedule");
-        //workScheduleStored = true;
+
+    var workScheduleObj = localStorage.getItem(todayDate);
+    //alert("workScheduleObj: " + workScheduleObj);
+    if (workScheduleObj !== null) {
+        workSchedule = JSON.parse(workScheduleObj);
     }
 
     for (var i = scheduleStartTime; i < scheduleEndTime; i++) {
@@ -230,9 +241,9 @@ function renderScheduler() {
         textArea.attr("rows", "2");
         textArea.attr("id", i);
         textArea.val(event);
-        
+
         divColEvent.append(textArea);
-        
+
         divRow.append(divColEvent);
 
         var divColBtnSave = $("<div>");
@@ -256,7 +267,8 @@ $(document).ready(function () {
         //alert("btnIndex: " + btnIndex);
         var textAreaWithID = $("#" + btnIndex);
         var eventVal = textAreaWithID.val();
-        workSchedule[btnIndex].event =  eventVal;
-        localStorage.setItem("workSchedule", workSchedule);
+        workSchedule[btnIndex].event = eventVal;
+        // save the schedule using today's date as the key to save new schedule every day
+        localStorage.setItem(todayDate, JSON.stringify(workSchedule));
     });
 });
