@@ -4,5 +4,5 @@ The wd-schedule.js file generates dynamic content to create a header panel with 
 The planned events are stored in a local storage by using today's date as the key.
 
 The screen shots of the web application:
-![Screenshot - 1](https://github.com/tushark-bootcamp/a4-webapi-codequiz/blob/master/Javascript%20quiz-1.png)
-![Screenshot - 2](https://github.com/tushark-bootcamp/a4-webapi-codequiz/blob/master/Javascript%20quiz-2.png)
+![Screenshot - 1](https://github.com/tushark-bootcamp/a5-work-day-scheduler/blob/master/Day-Planner-1.png)
+![Screenshot - 2](https://github.com/tushark-bootcamp/a5-work-day-scheduler/blob/master/Day-Planner-2.png)
